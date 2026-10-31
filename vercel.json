@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/tiktok/token",
+      "destination": "/api/token.js"
+    },
+    {
+      "source": "/api/tiktok/user",
+      "destination": "/api/user.js"
+    },
+    {
+      "source": "/api/tiktok/videos",
+      "destination": "/api/videos.js"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

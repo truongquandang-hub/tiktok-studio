@@ -1,0 +1,198 @@
+import type { GrowthDataPoint, VideoPost, DemographicData, TikTokAccount } from '../types/dashboard';
+
+export const mockAccounts: TikTokAccount[] = [
+  {
+    id: 'acc-1',
+    username: '@creator_studio_vn',
+    displayName: 'Creator Studio Vietnam',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    category: 'Công nghệ & AI',
+    followers: 143120,
+    following: 324,
+    totalVideos: 64,
+    views30d: 3482900,
+    engagementRate: 11.85,
+    growthRate: 3.3,
+    isVerified: true,
+    status: 'connected'
+  },
+  {
+    id: 'acc-2',
+    username: '@genz_fashion_shop',
+    displayName: 'GenZ Style Official',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80',
+    category: 'Thời trang & Xu hướng',
+    followers: 215400,
+    following: 112,
+    totalVideos: 89,
+    views30d: 5820000,
+    engagementRate: 14.2,
+    growthRate: 5.8,
+    isVerified: true,
+    status: 'connected'
+  },
+  {
+    id: 'acc-3',
+    username: '@daily_food_saigon',
+    displayName: 'Thánh Ăn Đêm Sài Gòn',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    category: 'Ẩm thực & Du lịch',
+    followers: 98600,
+    following: 86,
+    totalVideos: 48,
+    views30d: 2150000,
+    engagementRate: 16.5,
+    growthRate: 4.1,
+    isVerified: false,
+    status: 'connected'
+  }
+];
+
+export const mock30DaysGrowth: GrowthDataPoint[] = [
+  { date: 'Oct 01', followers: 138540, newFollowers: 120, views: 98400, interactions: 11200 },
+  { date: 'Oct 03', followers: 138810, newFollowers: 145, views: 112000, interactions: 13500 },
+  { date: 'Oct 05', followers: 139120, newFollowers: 180, views: 145000, interactions: 18200 },
+  { date: 'Oct 07', followers: 139380, newFollowers: 130, views: 89000, interactions: 9400 },
+  { date: 'Oct 09', followers: 139690, newFollowers: 155, views: 105000, interactions: 12100 },
+  { date: 'Oct 11', followers: 140020, newFollowers: 210, views: 182000, interactions: 24300 },
+  { date: 'Oct 13', followers: 140350, newFollowers: 165, views: 124000, interactions: 15100 },
+  { date: 'Oct 15', followers: 140680, newFollowers: 170, views: 132000, interactions: 16800 },
+  { date: 'Oct 17', followers: 141150, newFollowers: 290, views: 240000, interactions: 32000 },
+  { date: 'Oct 19', followers: 141520, newFollowers: 195, views: 165000, interactions: 20400 },
+  { date: 'Oct 21', followers: 141840, newFollowers: 160, views: 119000, interactions: 14200 },
+  { date: 'Oct 23', followers: 142100, newFollowers: 140, views: 104000, interactions: 12800 },
+  { date: 'Oct 25', followers: 142380, newFollowers: 150, views: 115000, interactions: 13900 },
+  { date: 'Oct 27', followers: 142610, newFollowers: 125, views: 98000, interactions: 11500 },
+  { date: 'Oct 29', followers: 142850, newFollowers: 135, views: 108000, interactions: 12900 },
+  { date: 'Oct 31', followers: 143120, newFollowers: 160, views: 126000, interactions: 15600 },
+];
+
+export const mock7DaysGrowth: GrowthDataPoint[] = mock30DaysGrowth.slice(-7);
+
+export const mockDemographics: DemographicData = {
+  gender: [
+    { name: 'Nữ (Female)', value: 64, color: '#ec4899' },
+    { name: 'Nam (Male)', value: 34, color: '#3b82f6' },
+    { name: 'Khác (Other)', value: 2, color: '#94a3b8' },
+  ],
+  age: [
+    { range: '13-17', percentage: 8 },
+    { range: '18-24', percentage: 46 },
+    { range: '25-34', percentage: 32 },
+    { range: '35-44', percentage: 10 },
+    { range: '45+', percentage: 4 },
+  ],
+  countries: [
+    { country: 'Việt Nam', flag: '🇻🇳', percentage: 82.4, count: '117,900' },
+    { country: 'Hoa Kỳ (USA)', flag: '🇺🇸', percentage: 7.8, count: '11,150' },
+    { country: 'Nhật Bản', flag: '🇯🇵', percentage: 3.6, count: '5,150' },
+    { country: 'Hàn Quốc', flag: '🇰🇷', percentage: 2.8, count: '4,000' },
+    { country: 'Đài Loan', flag: '🇹🇼', percentage: 1.9, count: '2,710' },
+    { country: 'Khác', flag: '🌍', percentage: 1.5, count: '2,140' },
+  ],
+};
+
+export const mockVideoPosts: VideoPost[] = [
+  {
+    id: 'vid-1',
+    channelId: 'acc-1',
+    channelUsername: '@creator_studio_vn',
+    title: 'Top 5 công cụ AI phân tích số liệu mạng xã hội đỉnh nhất 2026 🔥 #analytics #tech #ai',
+    thumbnail: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&q=80',
+    publishedAt: '2026-10-29 19:30',
+    duration: '00:54',
+    views: 482500,
+    likes: 54200,
+    comments: 1840,
+    shares: 8900,
+    saves: 12400,
+    engagementRate: 16.03,
+    url: 'https://tiktok.com/@creator_studio_vn/video/1',
+    status: 'published'
+  },
+  {
+    id: 'vid-2',
+    channelId: 'acc-2',
+    channelUsername: '@genz_fashion_shop',
+    title: 'Gợi ý 5 set đồ thu đông phong cách Y2K đi học, đi chơi cực xinh cho các nàng ✨👗',
+    thumbnail: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80',
+    publishedAt: '2026-10-28 20:00',
+    duration: '00:42',
+    views: 745000,
+    likes: 92400,
+    comments: 2450,
+    shares: 16800,
+    saves: 24500,
+    engagementRate: 18.28,
+    url: 'https://tiktok.com/@genz_fashion_shop/video/2',
+    status: 'published'
+  },
+  {
+    id: 'vid-3',
+    channelId: 'acc-1',
+    channelUsername: '@creator_studio_vn',
+    title: 'Làm thế nào để video TikTok cắn đề xuất liên tục? Bí quyết thuật toán FYP mới nhất!',
+    thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80',
+    publishedAt: '2026-10-24 20:00',
+    duration: '00:48',
+    views: 650400,
+    likes: 81200,
+    comments: 3100,
+    shares: 14500,
+    saves: 21800,
+    engagementRate: 18.54,
+    url: 'https://tiktok.com/@creator_studio_vn/video/3',
+    status: 'published'
+  },
+  {
+    id: 'vid-4',
+    channelId: 'acc-3',
+    channelUsername: '@daily_food_saigon',
+    title: 'Quán hủ tiếu gõ 30 năm gia truyền mở thâu đêm chỉ 25k đông nghẹt khách tại Quận 5 🍜🥢',
+    thumbnail: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&q=80',
+    publishedAt: '2026-10-23 22:30',
+    duration: '01:10',
+    views: 890000,
+    likes: 112000,
+    comments: 4800,
+    shares: 21500,
+    saves: 34000,
+    engagementRate: 19.35,
+    url: 'https://tiktok.com/@daily_food_saigon/video/4',
+    status: 'published'
+  },
+  {
+    id: 'vid-5',
+    channelId: 'acc-2',
+    channelUsername: '@genz_fashion_shop',
+    title: 'Unboxing kiện hàng áo bomber nỉ phối màu retro đang hot trend TikTok Shop 📦🧥',
+    thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80',
+    publishedAt: '2026-10-20 18:15',
+    duration: '00:58',
+    views: 520000,
+    likes: 64200,
+    comments: 1890,
+    shares: 8900,
+    saves: 14200,
+    engagementRate: 17.15,
+    url: 'https://tiktok.com/@genz_fashion_shop/video/5',
+    status: 'published'
+  },
+  {
+    id: 'vid-6',
+    channelId: 'acc-1',
+    channelUsername: '@creator_studio_vn',
+    title: '3 sai lầm khiến kênh TikTok bị bóp tương tác nặng mà bạn không hề hay biết ❌',
+    thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&q=80',
+    publishedAt: '2026-10-15 19:15',
+    duration: '01:05',
+    views: 410800,
+    likes: 45300,
+    comments: 1650,
+    shares: 8300,
+    saves: 11200,
+    engagementRate: 16.18,
+    url: 'https://tiktok.com/@creator_studio_vn/video/6',
+    status: 'published'
+  }
+];
