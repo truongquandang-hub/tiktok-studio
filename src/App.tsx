@@ -176,6 +176,14 @@ export function App() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
+    const error = params.get('error');
+    const errorDescription = params.get('error_description');
+
+    if (error) {
+      window.history.replaceState({}, document.title, window.location.pathname);
+      showToast(`⚠️ TikTok phản hồi lỗi: ${errorDescription || error}`);
+      return;
+    }
 
     if (code) {
       window.history.replaceState({}, document.title, window.location.pathname);
@@ -206,14 +214,19 @@ export function App() {
           const userData = await userRes.json();
           const user = userData.data?.user || userData.user || {};
 
-          // Fetch real videos
-          const vidRes = await fetch('/api/tiktok/videos', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ access_token: accessToken, max_count: 20 }),
-          });
-          const vidData = await vidRes.json();
-          const rawVideos = vidData.data?.videos || [];
+          // Fetch real videos (graceful fallback if video.list scope not enabled)
+          let rawVideos: any[] = [];
+          try {
+            const vidRes = await fetch('/api/tiktok/videos', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ access_token: accessToken, max_count: 20 }),
+            });
+            const vidData = await vidRes.json();
+            rawVideos = vidData.data?.videos || [];
+          } catch (e) {
+            console.warn('Video fetch fallback:', e);
+          }
 
           const newAccount: TikTokAccount = {
             id: `tiktok-${user.open_id || Date.now()}`,
