@@ -35,7 +35,7 @@ export const ConnectAccountModal = ({
 
   if (!isOpen) return null;
 
-  const CLIENT_KEY = 'aw9dxf9f6qpufpju';
+  const CLIENT_KEY = 'sbaw40uit53ou0bkd6';
 
   const handleOfficialOAuthLogin = async () => {
     try {

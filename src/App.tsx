@@ -160,13 +160,21 @@ export function App() {
   const [apiConfig, setApiConfig] = useState<TikTokApiConfig>(() => {
     try {
       const saved = localStorage.getItem('tiktok_api_config');
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.clientKey === 'aw9dxf9f6qpufpju') {
+          parsed.clientKey = 'sbaw40uit53ou0bkd6';
+          parsed.clientSecret = 'VBId5AjS0vMHKywbGaNcc7TICyoM3TIX';
+          localStorage.setItem('tiktok_api_config', JSON.stringify(parsed));
+        }
+        return parsed;
+      }
     } catch {
       // Fallback
     }
     return {
-      clientKey: 'aw9dxf9f6qpufpju',
-      clientSecret: 'jQfsFN3hLOWAx3BwBio9EfW9V0CDWfNY',
+      clientKey: 'sbaw40uit53ou0bkd6',
+      clientSecret: 'VBId5AjS0vMHKywbGaNcc7TICyoM3TIX',
       redirectUri: typeof window !== 'undefined' ? `${window.location.origin}/auth/tiktok/callback` : 'http://localhost:5173/auth/tiktok/callback',
       isConfigured: true,
     };

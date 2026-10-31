@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-  const CLIENT_KEY = process.env.VITE_TIKTOK_CLIENT_KEY || 'aw9dxf9f6qpufpju';
-  const CLIENT_SECRET = process.env.TIKTOK_CLIENT_SECRET || 'jQfsFN3hLOWAx3BwBio9EfW9V0CDWfNY';
+  const CLIENT_KEY = process.env.VITE_TIKTOK_CLIENT_KEY || 'sbaw40uit53ou0bkd6';
+  const CLIENT_SECRET = process.env.TIKTOK_CLIENT_SECRET || 'VBId5AjS0vMHKywbGaNcc7TICyoM3TIX';
   const { code, redirect_uri, code_verifier } = req.body || {};
 
   try {

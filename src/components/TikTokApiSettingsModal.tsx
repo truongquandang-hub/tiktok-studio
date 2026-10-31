@@ -24,8 +24,8 @@ export const TikTokApiSettingsModal = ({
   currentConfig,
 }: TikTokApiSettingsModalProps) => {
   const [activeTab, setActiveTab] = useState<'official' | 'rapidapi'>('official');
-  const [clientKey, setClientKey] = useState('aw9dxf9f6qpufpju');
-  const [clientSecret, setClientSecret] = useState('jQfsFN3hLOWAx3BwBio9EfW9V0CDWfNY');
+  const [clientKey, setClientKey] = useState('sbaw40uit53ou0bkd6');
+  const [clientSecret, setClientSecret] = useState('VBId5AjS0vMHKywbGaNcc7TICyoM3TIX');
   const [rapidApiKey, setRapidApiKey] = useState('');
   const [copied, setCopied] = useState(false);
 
@@ -35,8 +35,8 @@ export const TikTokApiSettingsModal = ({
 
   useEffect(() => {
     if (currentConfig) {
-      setClientKey(currentConfig.clientKey || 'aw9dxf9f6qpufpju');
-      setClientSecret(currentConfig.clientSecret || 'jQfsFN3hLOWAx3BwBio9EfW9V0CDWfNY');
+      setClientKey(currentConfig.clientKey === 'aw9dxf9f6qpufpju' ? 'sbaw40uit53ou0bkd6' : (currentConfig.clientKey || 'sbaw40uit53ou0bkd6'));
+      setClientSecret(currentConfig.clientSecret === 'jQfsFN3hLOWAx3BwBio9EfW9V0CDWfNY' ? 'VBId5AjS0vMHKywbGaNcc7TICyoM3TIX' : (currentConfig.clientSecret || 'VBId5AjS0vMHKywbGaNcc7TICyoM3TIX'));
       setRapidApiKey(currentConfig.rapidApiKey || '');
     }
   }, [currentConfig]);

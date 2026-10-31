@@ -2,8 +2,8 @@ import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
-const CLIENT_KEY = process.env.VITE_TIKTOK_CLIENT_KEY || 'aw9dxf9f6qpufpju';
-const CLIENT_SECRET = process.env.TIKTOK_CLIENT_SECRET || 'jQfsFN3hLOWAx3BwBio9EfW9V0CDWfNY';
+const CLIENT_KEY = process.env.VITE_TIKTOK_CLIENT_KEY || 'sbaw40uit53ou0bkd6';
+const CLIENT_SECRET = process.env.TIKTOK_CLIENT_SECRET || 'VBId5AjS0vMHKywbGaNcc7TICyoM3TIX';
 
 function tiktokDevMiddleware(): Plugin {
   return {
