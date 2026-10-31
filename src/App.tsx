@@ -197,7 +197,7 @@ export function App() {
       window.history.replaceState({}, document.title, window.location.pathname);
       showToast('🔄 Đang xác thực mã code từ TikTok và lấy dữ liệu kênh thật...');
 
-      const codeVerifier = sessionStorage.getItem('tiktok_code_verifier') || '';
+      const codeVerifier = sessionStorage.getItem('tiktok_code_verifier') || localStorage.getItem('tiktok_code_verifier') || '';
 
       fetch('/api/tiktok/token', {
         method: 'POST',
@@ -236,15 +236,19 @@ export function App() {
             console.warn('Video fetch fallback:', e);
           }
 
+          const cleanUsername = user.username 
+            ? (user.username.startsWith('@') ? user.username : `@${user.username}`) 
+            : (user.display_name ? `@${user.display_name.toLowerCase().replace(/\s+/g, '_')}` : `@tiktok_user`);
+
           const newAccount: TikTokAccount = {
             id: `tiktok-${user.open_id || Date.now()}`,
-            username: user.display_name ? `@${user.display_name.toLowerCase().replace(/\s+/g, '_')}` : `@tiktok_user`,
-            displayName: user.display_name || 'TikTok Channel',
+            username: cleanUsername,
+            displayName: user.display_name || user.username || 'TikTok Channel',
             avatar: user.avatar_large_url || user.avatar_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150',
             category: 'Kênh TikTok Chính Thức',
-            followers: user.follower_count || 0,
-            following: user.following_count || 0,
-            totalVideos: user.video_count || rawVideos.length,
+            followers: user.follower_count !== undefined ? user.follower_count : 0,
+            following: user.following_count !== undefined ? user.following_count : 0,
+            totalVideos: user.video_count !== undefined ? user.video_count : rawVideos.length,
             views30d: user.likes_count ? user.likes_count * 10 : (user.follower_count || 1000) * 12,
             engagementRate: 8.5,
             growthRate: 4.2,
@@ -270,7 +274,13 @@ export function App() {
             status: 'published',
           }));
 
-          setAccounts((prev) => [newAccount, ...prev.filter((a) => a.id !== newAccount.id)]);
+          setAccounts((prev) => {
+            const exists = prev.some(a => a.username.toLowerCase() === cleanUsername.toLowerCase() || a.id === newAccount.id);
+            if (exists) {
+              return prev.map(a => (a.username.toLowerCase() === cleanUsername.toLowerCase() || a.id === newAccount.id) ? { ...a, ...newAccount, id: a.id } : a);
+            }
+            return [newAccount, ...prev];
+          });
           setActiveAccount(newAccount);
           if (newVideos.length > 0) {
             setVideos((prev) => [...newVideos, ...prev]);

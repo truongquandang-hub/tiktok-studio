@@ -18,10 +18,11 @@ export async function generateCodeChallenge(verifier: string): Promise<string> {
 export async function buildTikTokAuthUrl(
   clientKey: string, 
   redirectUri: string,
-  scope: string = 'user.info.profile,user.info.stats'
+  scope: string = 'user.info.basic,user.info.profile,user.info.stats'
 ): Promise<string> {
   const verifier = generateCodeVerifier();
   sessionStorage.setItem('tiktok_code_verifier', verifier);
+  localStorage.setItem('tiktok_code_verifier', verifier);
 
   const challenge = await generateCodeChallenge(verifier);
   const state = `tt_${Date.now()}`;
